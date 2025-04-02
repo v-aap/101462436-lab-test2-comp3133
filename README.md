@@ -50,5 +50,5 @@ To run this project locally:
 
 1. Clone the repository
 ```bash
-git clone [repository-url]
-cd [repository-folder]
+git clone https://github.com/v-aap/101462436-lab-test2-comp3133.git
+cd 101462436-lab-test2-comp3133
