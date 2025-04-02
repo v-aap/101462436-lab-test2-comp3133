@@ -1,39 +1,43 @@
-<div class="mission-details-container" *ngIf="mission">
-    <h2>SpaceX Mission Details</h2>
-    
-    <div class="mission-card">
-      <div class="mission-header">
-        <img *ngIf="mission.links?.mission_patch_small" [src]="mission.links.mission_patch_small" alt="Mission patch">
-        <div class="mission-title">
-          <h3>Mission - {{ mission.mission_name }}</h3>
-          <p>Launch Year: {{ mission.launch_year }}</p>
-        </div>
-      </div>
+<div *ngIf="mission" class="mission-details-container">
+    <mat-card class="details-card">
+      <mat-card-header>
+        <img *ngIf="mission.links?.mission_patch_small" mat-card-avatar [src]="mission.links.mission_patch_small" alt="Mission patch">
+        <mat-card-title>{{ mission.mission_name }}</mat-card-title>
+        <mat-card-subtitle>Flight #{{ mission.flight_number }} ({{ mission.launch_year }})</mat-card-subtitle>
+      </mat-card-header>
       
-      <div class="mission-section">
-        <h4>Rocket</h4>
-        <p><strong>Name:</strong> {{ mission.rocket.rocket_name }}</p>
-        <p><strong>Type:</strong> {{ mission.rocket.rocket_type }}</p>
-      </div>
-      
-      <div class="mission-section">
-        <h4>Launch Details</h4>
-        <p>{{ mission.details }}</p>
-      </div>
-      
-      <div class="mission-section">
-        <h4>More Info on Launch Details</h4>
-        <div class="mission-links">
-          <a *ngIf="mission.links.article_link" [href]="mission.links.article_link" target="_blank">
-            <span class="link-icon">📰</span> Article
-          </a>
-          <a *ngIf="mission.links.wikipedia" [href]="mission.links.wikipedia" target="_blank">
-            <span class="link-icon">📚</span> Wikipedia
-          </a>
-          <a *ngIf="mission.links.video_link" [href]="mission.links.video_link" target="_blank">
-            <span class="link-icon">🎬</span> Video
-          </a>
-        </div>
-      </div>
-    </div>
+      <mat-card-content>
+        <section class="details-section">
+          <h3>Rocket</h3>
+          <mat-chip-listbox>
+            <mat-chip>{{ mission.rocket.rocket_name }}</mat-chip>
+            <mat-chip>{{ mission.rocket.rocket_type }}</mat-chip>
+          </mat-chip-listbox>
+        </section>
+        
+        <mat-divider></mat-divider>
+        
+        <section class="details-section">
+          <h3>Launch Details</h3>
+          <p>{{ mission.details }}</p>
+        </section>
+        
+        <mat-divider></mat-divider>
+        
+        <section class="details-section">
+          <h3>Links</h3>
+          <div class="link-buttons">
+            <a *ngIf="mission.links.article_link" mat-raised-button color="primary" [href]="mission.links.article_link" target="_blank">
+              <mat-icon>article</mat-icon> Article
+            </a>
+            <a *ngIf="mission.links.wikipedia" mat-raised-button color="primary" [href]="mission.links.wikipedia" target="_blank">
+              <mat-icon>public</mat-icon> Wikipedia
+            </a>
+            <a *ngIf="mission.links.video_link" mat-raised-button color="primary" [href]="mission.links.video_link" target="_blank">
+              <mat-icon>videocam</mat-icon> Video
+            </a>
+          </div>
+        </section>
+      </mat-card-content>
+    </mat-card>
   </div>

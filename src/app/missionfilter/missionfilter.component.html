@@ -1,10 +1,21 @@
-<div class="filter-container">
-    <h3>Filter by Launch Year</h3>
-    <div class="filter-controls">
-      <select [(ngModel)]="selectedYear" (change)="onYearChange()">
-        <option value="">All Years</option>
-        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-      </select>
-      <button (click)="clearFilter()" *ngIf="selectedYear">Clear Filter</button>
-    </div>
-  </div>
+<mat-card class="filter-card">
+    <mat-card-header>
+      <mat-card-title>Filter Missions</mat-card-title>
+    </mat-card-header>
+    
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Launch Year</mat-label>
+        <mat-select [(value)]="selectedYear" (selectionChange)="onYearChange()">
+          <mat-option value="">All Years</mat-option>
+          <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </mat-card-content>
+    
+    <mat-card-actions *ngIf="selectedYear">
+      <button mat-button color="warn" (click)="clearFilter()">
+        Clear Filter
+      </button>
+    </mat-card-actions>
+  </mat-card>
