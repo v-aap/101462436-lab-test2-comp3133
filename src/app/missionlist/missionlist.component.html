@@ -1,0 +1,27 @@
+<div class="mission-list-container">
+    <h1>SpaceX Mission Launch List</h1>
+    
+    <div class="missions">
+      <div *ngFor="let mission of missions" class="mission-card" (click)="selectMission(mission)">
+        <div class="mission-header">
+          <img *ngIf="mission.links.mission_patch_small" [src]="mission.links.mission_patch_small" alt="Mission patch">
+          <div class="mission-title">
+            <h2>{{ mission.mission_name }}</h2>
+            <p>{{ mission.launch_year }}</p>
+          </div>
+        </div>
+        <p class="mission-details">{{ mission.details }}</p>
+        <div class="mission-info">
+          <p><strong>Flight Number:</strong> {{ mission.flight_number }}</p>
+          <p><strong>Rocket:</strong> {{ mission.rocket.rocket_name }} ({{ mission.rocket.rocket_type }})</p>
+        </div>
+        <div class="mission-links">
+          <a *ngIf="mission.links.article_link" [href]="mission.links.article_link" target="_blank">Article</a>
+          <a *ngIf="mission.links.wikipedia" [href]="mission.links.wikipedia" target="_blank">Wikipedia</a>
+          <a *ngIf="mission.links.video_link" [href]="mission.links.video_link" target="_blank">Video</a>
+        </div>
+      </div>
+    </div>
+  
+    <app-missiondetails *ngIf="selectedMission" [mission]="selectedMission"></app-missiondetails>
+  </div>

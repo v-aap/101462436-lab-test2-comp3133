@@ -1,0 +1,10 @@
+<div class="filter-container">
+    <h3>Filter by Launch Year</h3>
+    <div class="filter-controls">
+      <select [(ngModel)]="selectedYear" (change)="onYearChange()">
+        <option value="">All Years</option>
+        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+      </select>
+      <button (click)="clearFilter()" *ngIf="selectedYear">Clear Filter</button>
+    </div>
+  </div>
